@@ -11,7 +11,8 @@
 #define COL 9
 #define ROWS ROW+2
 #define COLS COL+2
-#define EASY_COUNT 80
+#define EASY_COUNT 10
+
 
 void InitBoard(char board[ROWS][COLS], int row, int col, char set);
 void DisplayBoard(char board[ROWS][COLS], int row, int col);

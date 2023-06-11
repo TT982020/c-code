@@ -52,16 +52,44 @@ int get_mine_count(char mine[ROWS][COLS], int x, int y){
 		}
 	}
 	return count;
+	
+}
+
+void extend(char mine[ROWS][COLS], char show[ROWS][COLS], int x, int y, int* count) {
+	if (x <= 0 || y <= 0 || x > ROW || y > COL || show[x][y]==' '|| show[x][y] !='*')
+	{
+		return;
+	}
+	if (get_mine_count(mine, x, y) != 0)
+	{
+		(*count)++;
+		show[x][y] = get_mine_count(mine, x, y) + '0';
+	}
+	else {
+		(*count)++;
+		show[x][y] = ' ';
+		extend(mine, show, x - 1, y - 1, count);
+		extend(mine, show, x - 1, y, count);
+		extend(mine, show, x - 1, y + 1, count);
+		extend(mine, show, x, y - 1, count);
+		extend(mine, show, x, y + 1, count);
+		extend(mine, show, x + 1, y, count);
+		extend(mine, show, x + 1, y - 1, count);
+	}
+	return;
 }
 
 void FineMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col) {
 	int x = 0;
 	int y = 0;
 	int win = 0;
+	int n = 0;
 	while (win < row * col - EASY_COUNT)
 	{
 		printf("¿ªÊ¼É¨À×\n");
 		scanf("%d%d", &x, &y);
+		n = 0;
+		int* cnt = &n;
 		if (x >= 1 && x <= row && y >= 1 && y <= col) {
 			if (mine[x][y] == '1')
 			{
@@ -70,10 +98,14 @@ void FineMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col) {
 				break;
 			}
 			else {
-				int count = get_mine_count(mine, x, y);
+				/*int count = get_mine_count(mine, x, y);
 				show[x][y] = count + '0';
+				*/
+				extend(mine,show, x, y, cnt);
+				win += *cnt;
 				DisplayBoard(show, row, col);
-				win++;
+				printf("win=%d\n", win);
+				//win++;
 			}
 		}
 		else {
