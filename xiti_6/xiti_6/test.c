@@ -13,6 +13,7 @@ int main() {
         }
     }
 }
+
 //正方形图案
 //int main() {
 //    int n = 0;
