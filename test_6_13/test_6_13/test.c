@@ -11,7 +11,6 @@ int main() {
 	}
 	printf("%p\n", &arr);
 	printf("%p\n", &arr+1);
-	printf("%d\n", ( & arr + 1 )- &arr[0]);
 
 }
 //Çó×Ö·û´®³¤¶È
