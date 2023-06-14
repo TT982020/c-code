@@ -1,0 +1,7 @@
+﻿  test.c
+C:\Users\lenovo'\Desktop\c-code\test_6_13\test_6_13\test.c(14,39): warning C4047: “-”:“int (*)[5]”与“int *”的间接级别不同
+C:\Users\lenovo'\Desktop\c-code\test_6_13\test_6_13\test.c(14,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“__int64”
+C:\Users\lenovo'\Desktop\c-code\test_6_13\test_6_13\test.c(14,9): message : 请考虑在格式字符串中使用“%lld”
+C:\Users\lenovo'\Desktop\c-code\test_6_13\test_6_13\test.c(14,9): message : 请考虑在格式字符串中使用“%Id”
+C:\Users\lenovo'\Desktop\c-code\test_6_13\test_6_13\test.c(14,9): message : 请考虑在格式字符串中使用“%I64d”
+  test_6_13.vcxproj -> C:\Users\lenovo'\Desktop\c-code\test_6_13\x64\Debug\test_6_13.exe
