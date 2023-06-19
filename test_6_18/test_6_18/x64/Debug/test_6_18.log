@@ -1,0 +1,6 @@
+﻿  test.c
+C:\Users\lenovo'\Desktop\c-code\test_6_18\test_6_18\test.c(19,2): warning C4013: “gets”未定义；假设外部返回 int
+C:\Users\lenovo'\Desktop\c-code\test_6_18\test_6_18\test.c(38,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+C:\Users\lenovo'\Desktop\c-code\test_6_18\test_6_18\test.c(38,9): message : 请考虑在格式字符串中使用“%zd”
+C:\Users\lenovo'\Desktop\c-code\test_6_18\test_6_18\test.c(20,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  test_6_18.vcxproj -> C:\Users\lenovo'\Desktop\c-code\test_6_18\x64\Debug\test_6_18.exe
