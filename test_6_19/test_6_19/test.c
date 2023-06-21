@@ -2,27 +2,194 @@
 #include <stdio.h>
 #include <Windows.h>
 #include <assert.h>
-int Add(int x, int y) {
-	return x + y;
+#include <stdlib.h>
+#include <string.h>
+struct Stu {
+	char name[20];
+	int age;
+};
+int cmp_stu_by_name(const void* e1, const void* e2) {
+	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name);
 }
-void calc(int(*pf)(int, int)) {
-	int a = 3, b = 5;
-	int ret = pf(a, b);
-	printf("%d\n", ret);
+int cmp_stu_by_age(const void* e1, const void* e2) {
+	return ((struct Stu*)e1)->age-((struct Stu*)e2)->age;
+}
+void Swap(char* buf1, char* buf2, int width) {
+	int i = 0;
+	for (i = 0; i < width; i++) {
+		char tmp = *buf1;
+		*buf1 = *buf2;
+		*buf2 = tmp;
+		buf1++;
+		buf2++;
+	}
+	
+}
+void bubble_sort(void* base, int sz, int width, int (*cmp)(const void* e1, const void* e2)) {
+	for (int i = 0; i < sz-1; i++)
+	{
+		int flag = 1;
+		for (int j = 0; j < sz-1-i; j++) {
+			
+			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0)
+			{
+				flag = 0;
+				Swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
+			}
+		}
+		if (flag)
+		{
+			break;
+		}
+	}
+	
 }
 int main() {
-	int arr[5] = { 0 };
-	int (*p)[5] = &arr;
-
-	printf("%p\n", Add);
-	printf("%p\n", &Add);
-
-	int (*pf)(int, int) = &Add;
-	int ret = (*pf)(2, 3);
-	ret = pf(2, 3);
-	printf("%d\n", ret);
-	calc(Add);
+	struct Stu arr[] = { {"zhangsan",25},{"lisi",30},{"wangwu",12} };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	//qsort(arr, sz, sizeof(struct Stu), cmp_stu_by_age);
+	bubble_sort(arr, sz, sizeof(struct Stu), cmp_stu_by_name);
+	for (int i = 0; i < sz; i++) {
+		printf("%s %d\n", arr[i].name, arr[i].age);
+	}
 }
+//int cmp_int(const void* e1, const void* e2) {
+//	return (*(int*)e1 - *(int*)e2);
+//}
+//int main() {
+//	int arr[] = { 0,5,4,3,7,8,1,9,3 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	qsort(arr, sz, sizeof(int), cmp_int);
+//	for (int i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//}
+//int Add(int x, int y) {
+//	return x + y;
+//}
+//int Sub(int x, int y) {
+//	return x - y;
+//}
+//int Mul(int x, int y) {
+//	return x * y;
+//}
+//int Div(int x, int y) {
+//	return x / y;
+//}
+//void menu() {
+//	printf("************************\n");
+//	printf("****1. Add   2. Sub ****\n");
+//	printf("****3. Mul   4. Div ****\n");
+//	printf("****0. exit         ****\n");
+//	printf("************************\n");
+//}
+//int main() {
+//	//转移表
+//	int (*arr[])(int, int) = { 0, Add,Sub,Mul,Div };
+//
+//	//指向函数指针数组的指针
+//
+//	int (*(*ppfArr)[5])(int,int) = &arr;
+//	int input = 0;
+//	
+//	do
+//	{
+//		menu();
+//		scanf("%d", &input);
+//		if (input == 0)
+//		{
+//			printf("退出游戏\n");
+//		}
+//		else if (input >= 1 && input <= 4) {
+//			int x = 0, y = 0;
+//			printf("请输入两个整数:>");
+//			scanf("%d%d", &x, &y);
+//			int ret = arr[input](x, y);
+//			printf("%d\n", ret);
+//		}
+//	} while (input);
+//}
+//int Add(int x, int y) {
+//	return x + y;
+//}
+//int Sub(int x, int y) {
+//	return x - y;
+//}
+//int Mul(int x, int y) {
+//	return x * y;
+//}
+//int Div(int x, int y) {
+//	return x / y;
+//}
+//void calc(int (*pf)(int,int)) {
+//	int x = 0, y = 0;
+//	printf("请输入两个整数:>");
+//	scanf("%d%d", &x, &y);
+//	int ret = pf(x, y);
+//	printf("%d\n", ret);
+//}
+//void menu() {
+//	printf("************************\n");
+//	printf("****1. Add   2. Sub ****\n");
+//	printf("****3. Mul   4. Div ****\n");
+//	printf("****0. exit         ****\n");
+//	printf("************************\n");
+//}
+//int main() {
+//	int input = 0;
+//	menu();
+//	
+//	do
+//	{
+//		printf("请输入:>");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			calc(Add);
+//			break;
+//		case 2:
+//			calc(Sub);
+//			break;
+//		case 3:
+//			calc(Mul);
+//			break;
+//		case 4:
+//			calc(Div);
+//			break;
+//		case 0:
+//			printf("游戏结束\n");
+//			break;
+//		default:
+//			printf("输入有误，请重新输入\n");
+//			break;
+//		}
+//	} while (input);
+//}
+
+//int Add(int x, int y) {
+//	return x + y;
+//}
+
+//void calc(int(*pf)(int, int)) {
+//	int a = 3, b = 5;
+//	int ret = pf(a, b);
+//	printf("%d\n", ret);
+//}
+//int main() {
+//	int arr[5] = { 0 };
+//	int (*p)[5] = &arr;
+//
+//	printf("%p\n", Add);
+//	printf("%p\n", &Add);
+//
+//	int (*pf)(int, int) = &Add;
+//	int ret = (*pf)(2, 3);
+//	ret = pf(2, 3);
+//	printf("%d\n", ret);
+//	calc(Add);
+//}
 //void print(int arr[3][5],int r,int c) {
 //	for (int i = 0; i < r; i++)
 //	{
