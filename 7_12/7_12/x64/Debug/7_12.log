@@ -1,0 +1,6 @@
+﻿  test.c
+C:\Users\lenovo'\Desktop\c-code\7_12\7_12\test.c(16,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\lenovo'\Desktop\c-code\7_12\7_12\test.c(32,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\lenovo'\Desktop\c-code\7_12\7_12\test.c(138,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\lenovo'\Desktop\c-code\7_12\7_12\test.c(155,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  7_12.vcxproj -> C:\Users\lenovo'\Desktop\c-code\7_12\x64\Debug\7_12.exe
