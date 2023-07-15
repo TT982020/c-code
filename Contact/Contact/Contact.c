@@ -57,7 +57,7 @@ void ShowContact(Contact* pc) {
 	}
 }
 
-int findByName(Contact * pc, char name[]) {
+static int findByName(Contact * pc, char name[]) {
 	assert(pc);
 	for (int i = 0; i < pc->count; i++)
 	{
