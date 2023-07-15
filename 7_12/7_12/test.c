@@ -173,7 +173,7 @@ void is_sorted(int arr[], int len) {
 	int flag1 = 0, flag2 = 0;
 	for (int i = 0; i < len-1; i++)
 	{
-		if (arr[i] < arr[i + 1])
+		if (arr[i] <= arr[i + 1])
 		{
 			flag1 = 1;
 		}
