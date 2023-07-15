@@ -8,6 +8,8 @@
 #define MAX_SEX 5
 #define MAX_TELE 12
 #define MAX_ADDR 30
+#define DEFAULT_SZ 3
+#define INC_SZ 2
 typedef struct PeoInfo
 {
 	char name[MAX_NAME];
@@ -17,12 +19,20 @@ typedef struct PeoInfo
 	char addr[MAX_TELE];
 }PeoInfo;
 
+//¾²Ì¬°æ±¾
+//typedef struct Contact {
+//	PeoInfo data[MAX];
+//	int count;
+//}Contact;
+
+//¶¯Ì¬°æ±¾
 typedef struct Contact {
-	PeoInfo data[MAX];
+	PeoInfo* data;
 	int count;
+	int capacity;
 }Contact;
 
-void InitContact(Contact* pc);
+int InitContact(Contact* pc);
 
 void AddContact(Contact* pc);
 
@@ -35,4 +45,6 @@ void SearchContact(Contact* pc);
 void ModifyContact(Contact* pc);
 
 void SortContact(Contact* pc);
+
+void DestroyContact(Contact* pc);
 

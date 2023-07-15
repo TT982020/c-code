@@ -1,24 +1,51 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "Contact.h"
 
-void InitContact(Contact* pc) {
-	pc->count = 0;
-	memset(pc->data, 0, sizeof(pc->data));
+//静态版本
+//void InitContact(Contact* pc) {
+//	pc->count = 0;
+//	memset(pc->data, 0, sizeof(pc->data));
+//}
+
+//动态版本
+int InitContact(Contact* pc) {
+	 pc->count = 0;
+	 pc->data = (PeoInfo*) calloc(DEFAULT_SZ, sizeof(PeoInfo));
+	 if (pc->data == NULL)
+	 {
+		 printf("InitContact::%s\n", strerror(errno));
+		 return 1;
+	 }
+
+	pc->capacity = DEFAULT_SZ;
+	return 0;
+}
+void CheckCapacity(Contact* pc) {
+	if (pc->count == pc->capacity)
+	{
+		PeoInfo* ptr = (PeoInfo*)realloc(pc->data, (pc->capacity + INC_SZ) * sizeof(PeoInfo));
+		if (ptr == NULL)
+		{
+			printf("AddContact::%s\n", strerror(errno));
+		}
+		else {
+			pc->data = ptr;
+			pc->capacity += INC_SZ;
+			//不能free ptr，因为此时pc->data就是ptr，会销毁掉还需要用的数据
+			/*free(ptr);
+			ptr = NULL;*/
+			printf("扩容成功\n");
+		}
+	}
+	
+	
 }
 
 void AddContact(Contact* pc) {
 	assert(pc);
-	char name[MAX_NAME] = { 0 };
-	int age = 0;
-	char sex[MAX_SEX] = {0};
-	char tele[MAX_TELE] = { 0 };
-	char addr[MAX_TELE] = { 0 };
-	PeoInfo p = { 0 };
-	if (pc->count==MAX)
-	{
-		printf("通讯录已满，不可添加\n");
-		return;
-	}
+
+	CheckCapacity(pc);
+	
 	printf("请输入姓名:>");
 	scanf("%s", pc->data[pc->count].name);
 
@@ -155,4 +182,11 @@ void SortContact(Contact* pc) {
 	assert(pc);
 	qsort(pc->data, pc->count, sizeof(PeoInfo), cmp_by_name);
 	printf("排序成功!\n");
+}
+
+
+void DestroyContact(Contact* pc) {
+	free(pc->data);
+	pc->data = NULL;
+	return;
 }
