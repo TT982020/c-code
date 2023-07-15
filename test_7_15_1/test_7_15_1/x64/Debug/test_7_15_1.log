@@ -1,0 +1,6 @@
+﻿  test.c
+C:\Users\lenovo'\Desktop\c-code\test_7_15_1\test_7_15_1\test.c(68,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+C:\Users\lenovo'\Desktop\c-code\test_7_15_1\test_7_15_1\test.c(68,9): message : 请考虑在格式字符串中使用“%zd”
+C:\Users\lenovo'\Desktop\c-code\test_7_15_1\test_7_15_1\test.c(69,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+C:\Users\lenovo'\Desktop\c-code\test_7_15_1\test_7_15_1\test.c(69,9): message : 请考虑在格式字符串中使用“%zd”
+  test_7_15_1.vcxproj -> C:\Users\lenovo'\Desktop\c-code\test_7_15_1\x64\Debug\test_7_15_1.exe
