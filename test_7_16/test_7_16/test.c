@@ -39,6 +39,8 @@ void Test1(void)
 	char* str = NULL;
 	GetMemory1(&str);
 	strcpy(str, "hello world");
+	free(str);
+	str = NULL;
 	printf(str);
 }
 
@@ -53,6 +55,8 @@ void Test2(void)
 	char* str = NULL;
 	str = GetMemory2();
 	strcpy(str, "hello world");
+	free(str);
+	str = NULL;
 	printf(str);
 }
 
