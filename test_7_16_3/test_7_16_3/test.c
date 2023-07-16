@@ -166,13 +166,47 @@ struct S
 
 //sprintf: 把一个结构体对象输出到一个字符串
 //sscanf: 把一个字符串输入到一个结构体中
-int main() {
-	struct S s = { "lisi",20,98 };
-	struct S tmp = { 0 };
-	char buf[100] = { 0 };
-	sprintf(buf, "%s %d %f", s.name, s.age, s.score);
-	printf("%s\n", buf);
+//int main() {
+//	struct S s = { "lisi",20,98 };
+//	struct S tmp = { 0 };
+//	char buf[100] = { 0 };
+//	sprintf(buf, "%s %d %f", s.name, s.age, s.score);
+//	printf("%s\n", buf);
+//
+//	sscanf(buf, "%s %d %f", tmp.name, &(tmp.age), &(tmp.score));
+//	printf("%s %d %f", tmp.name, tmp.age, tmp.score);
+//}
 
-	sscanf(buf, "%s %d %f", tmp.name, &(tmp.age), &(tmp.score));
-	printf("%s %d %f", tmp.name, tmp.age, tmp.score);
+
+int main() {
+	FILE* pf = fopen("test.txt", "r");
+	if (pf == NULL)
+	{
+		perror("fopen");
+		return 1;
+	}
+
+	fseek(pf, 2, SEEK_SET);
+
+	char ch = fgetc(pf);
+	printf("%c\n", ch);
+	printf("%d\n", ftell(pf));//3
+
+	/*fseek(pf, 2, SEEK_CUR);
+
+	ch = fgetc(pf);
+	printf("%c\n", ch);*/
+
+	fseek(pf, -1, SEEK_END);
+	ch = fgetc(pf);
+	printf("%c\n", ch);
+	printf("%d\n", ftell(pf));//6
+
+	rewind(pf);
+	ch = fgetc(pf);
+	printf("%c\n", ch);
+	
+	fclose(pf);
+	pf = NULL;
+	return 0;
 }
