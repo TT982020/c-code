@@ -1,2 +1,3 @@
 ﻿  Contact.c
+C:\Users\lenovo'\Desktop\c-code\Contact\Contact\Contact.c(218,10): warning C4098: “SaveContact”:“void”函数返回值
   Contact.vcxproj -> C:\Users\lenovo'\Desktop\c-code\Contact\x64\Debug\Contact.exe

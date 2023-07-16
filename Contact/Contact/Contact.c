@@ -7,19 +7,6 @@
 //	memset(pc->data, 0, sizeof(pc->data));
 //}
 
-//动态版本
-int InitContact(Contact* pc) {
-	 pc->count = 0;
-	 pc->data = (PeoInfo*) calloc(DEFAULT_SZ, sizeof(PeoInfo));
-	 if (pc->data == NULL)
-	 {
-		 printf("InitContact::%s\n", strerror(errno));
-		 return 1;
-	 }
-
-	pc->capacity = DEFAULT_SZ;
-	return 0;
-}
 void CheckCapacity(Contact* pc) {
 	if (pc->count == pc->capacity)
 	{
@@ -37,9 +24,37 @@ void CheckCapacity(Contact* pc) {
 			printf("扩容成功\n");
 		}
 	}
-	
-	
 }
+
+void LoadContact(Contact* pc) {
+	FILE* fp = fopen("contact.txt", "rb");
+	PeoInfo tmp = { 0 };
+	while (fread(&tmp, sizeof(PeoInfo), 1, fp) == 1)
+	{
+		CheckCapacity(pc);
+		pc->data[pc->count] = tmp;
+		pc->count++;
+	} 
+	fclose(fp);
+	fp = NULL;
+	return;
+}
+
+//动态版本
+int InitContact(Contact* pc) {
+	 pc->count = 0;
+	 pc->data = (PeoInfo*) calloc(DEFAULT_SZ, sizeof(PeoInfo));
+	 if (pc->data == NULL)
+	 {
+		 printf("InitContact::%s\n", strerror(errno));
+		 return 1;
+	 }
+
+	pc->capacity = DEFAULT_SZ;
+	LoadContact(pc);
+	return 0;
+}
+
 
 void AddContact(Contact* pc) {
 	assert(pc);
@@ -189,4 +204,16 @@ void DestroyContact(Contact* pc) {
 	free(pc->data);
 	pc->data = NULL;
 	return;
+}
+
+
+void SaveContact(Contact* pc) {
+	FILE* pf = fopen("contact.txt", "wb");
+	for (int i = 0; i < pc->count; i++) {
+		fwrite(pc->data+i, sizeof(PeoInfo), 1, pf);
+	}
+	
+	fclose(pf);
+	pf = NULL;
+	return 0;
 }

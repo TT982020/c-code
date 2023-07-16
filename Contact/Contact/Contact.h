@@ -48,3 +48,5 @@ void SortContact(Contact* pc);
 
 void DestroyContact(Contact* pc);
 
+void SaveContact(Contact* pc);
+
