@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include "test.h"
+#include <stddef.h>
 #define M 100
 #undef M
 #define SQUARE(X) ((X)*(X))
@@ -31,13 +32,18 @@ void test3() {
 }
 void test4() {
 	int* p = MALLOC(10, int);
-	free(p);
-	p = NULL;
+	printf("%p", p);
 	
 }
+struct MyStruct
+{
+	int a;
+	int b;
+};
 int main() {
 	//test1();
 	//test2();
 	//test3();
 	test4();
+	//printf("%d",offsetof(struct MyStruct, b));
 }
