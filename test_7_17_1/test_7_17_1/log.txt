@@ -1,0 +1,10 @@
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 0
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 1
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 2
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 3
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 4
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 5
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 6
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 7
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 8
+C:\Users\lenovo'\Desktop\c-code\test_7_17_1\test_7_17_1\test.c: line = 22, date = Jul 18 2023,time = 19:05:56. i = 9
