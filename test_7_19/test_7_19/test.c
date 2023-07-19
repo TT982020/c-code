@@ -7,12 +7,26 @@
 #include <limits.h>
 //offsetof宏实现
 #define OFFSETOF(type,m_name)  (size_t)&(((struct S*)0)->m_name)
+
+//写一个宏，将一个二进制数的奇偶位进行交换
+//思路：0101 0111 0111 1011 0101 0111 0111 1011 将奇数位变0，偶数位不变偶，左移1位；偶数位不变，奇数位右移1位; 两者再相加，就得到结果
+
+
+//   0101 0111 0111 1011 0101 0111 0111 1011 & 0101 0101 0101 0101 0101 0101 0101 0101 也就是 & 0x55555555，再左移
+
+//   0101 0111 0111 1011 0101 0111 0111 1011 & 1010 1010 1010 1010 1010 1010 1010 1010 也就是 & 0xaaaaaaaa，再右移
+#define SWAP_BIT(n)  (n) = (((n&0x55555555)<<1)+((n&0xaaaaaaaa)>>1))
+
+
+
 typedef struct S
 {
 	char c1;
 	int i;
 	char c2;
 } S;
+
+
 
 //字符串转整数函数，需要考虑一些特殊情况
 //1.字符串前面有空白字符
@@ -89,12 +103,22 @@ int main() {
 	int ret = my_atoi(arr);
 	if (sta==INVALID)
 	{
-		printf("非法:%d", ret);
+		printf("非法:%d\n", ret);
 	}
 	else {
-		printf("合法:%d", ret);
+		printf("合法:%d\n", ret);
 	}
+
+	// int 10
+	// 1010 -> 0101= 5
+	int n = 10;
+	SWAP_BIT(n);
+	printf("%d\n", n);
 }
+
+
+
+
 
 
 
